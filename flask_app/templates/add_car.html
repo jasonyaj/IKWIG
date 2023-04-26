@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <title>IGWIG</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="container-fluid">
+      <header
+        class="d-flex justify-content-between align-items-center border-bottom border-2"
+      >
+        <div>
+          <h1>IKWIG</h1>
+        </div>
+        <div class="d-flex justify-content-end">
+          <div>
+            <form action="/my_garage">
+              <button class="btn">My Garage</button>
+            </form>
+          </div>
+          <div class="pe-2">
+            <form action="/research">
+              <button class="btn">Research</button>
+            </form>
+          </div>
+          <div>
+            <form action="/logout">
+              <button class="btn btn-dark">Log Out</button>
+            </form>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="container">
+      <div class="row mt-5">
+        <h2>What's entering the garage?!</h2>
+      </div>
+
+      <!-- Form -->
+      <div class="row">
+        <form action="/garage/process" method="POST">
+          <div class="row">
+            <div class="col-6">
+              <div>
+                <label for="year"> Year: </label>
+                <input type="text" name="year" id="year" class="form-control" placeholder="YYYY"/>
+              </div>
+              <div>
+                <label for="make"> Make: </label>
+                <input type="text" name="make" id="make" class="form-control" />
+              </div>
+              <div>
+                <label for="model"> Model: </label>
+                <input
+                  type="text"
+                  name="model"
+                  id="model"
+                  class="form-control"
+                />
+              </div>
+              <div>
+                <label for="trim"> Trim: </label>
+                <input type="text" name="trim" id="trim" class="form-control" />
+              </div>
+              <div>
+                <label for="color"> Color: </label>
+                <input
+                  type="text"
+                  name="color"
+                  id="color"
+                  class="form-control"
+                />
+              </div>
+              <div>
+                <label for="vin"> Vin: </label>
+                <input type="text" name="vin" id="vin" class="form-control" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div>
+                <label for="description"> Description: </label>
+                <textarea
+                  name="description"
+                  cols="30"
+                  rows="9"
+                  id=""
+                  class="form-control"
+                ></textarea>
+              </div>
+              <!-- Add photo feature -->
+              <div class="row">
+                <form action="">
+                  <div class="my-2">
+                    <button class="btn btn-dark">Add Photo</button>
+                  </div>
+                  <div>
+                    <button class="btn btn-dark">Delete Photo</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-dark">Add Car</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
