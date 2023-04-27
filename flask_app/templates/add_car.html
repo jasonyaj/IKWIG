@@ -11,6 +11,7 @@
       integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{{url_for('static', filename='/styles.css')}}" >
     <title>IGWIG</title>
   </head>
   <body>
@@ -49,7 +50,7 @@
 
       <!-- Form -->
       <div class="row">
-        <form action="/garage/process" method="POST">
+        <form action="/garage/process" method="POST" enctype="multipart/form-data">
           <div class="row">
             <div class="col-6">
               <div>
@@ -88,7 +89,7 @@
               </div>
             </div>
             <div class="col-6">
-              <div>
+              <div class="mb-5">
                 <label for="description"> Description: </label>
                 <textarea
                   name="description"
@@ -98,17 +99,13 @@
                   class="form-control"
                 ></textarea>
               </div>
+              
               <!-- Add photo feature -->
+              <p>Add a photo:</p>
               <div class="row">
-                <form action="">
-                  <div class="my-2">
-                    <button class="btn btn-dark">Add Photo</button>
-                  </div>
-                  <div>
-                    <button class="btn btn-dark">Delete Photo</button>
-                  </div>
-                </form>
+                  <input type="file" name="file" />
               </div>
+            
             </div>
             <div class="row mt-3">
               <div class="d-flex justify-content-end">

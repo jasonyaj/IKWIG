@@ -44,22 +44,7 @@
       <div class="row mt-5">
         <!-- Car Card -->
         <div class="col-7 pe-5">
-          <div class="row">
-            <img
-              src="/flask_app/static/images/1991_toyota_supra_1991.webp"
-              alt="89 supra image"
-            />
-          </div>
-          <div class="row hidden-item" id="carCard">
-            {% for car in list_of_cars: %}
-              <h5>Year: <span class="ms-2">{{car.year}}</span></h5>
-              <h5>Make: <span class="ms-2">{{car.make}}</span></h5>
-              <h5>Model: <span class="ms-2">{{car.model}}</span></h5>
-              <h5>Trim: <span class="ms-2">{{car.trim}}</span></h5>
-              <h5>Color: <span class="ms-2">{{car.color}}</span></h5>
-              <h5>Description:</h5>
-              <textarea name="" id="" cols="30" rows="10">{{car.description}}</textarea>
-            {% endfor %}
+          <div class="row" id="carCard">
           </div>
         </div>
 
@@ -72,7 +57,7 @@
             <select name="cars" id="cars" class="form-select" size="10">
               {% for car in list_of_cars: %}
                 {% if car.sold == 0 %}
-                  <option value="{{car.id}}"  onclick="get_value(value); display_selection(value);" id="selection">
+                  <option value="{{car.id}}"  onclick="get_value(value); load_cars(this, {{car.id}});" id="selection">
                     {{car.year}} {{car.make}} {{car.model}} {{car.trim}}
                   </option>
                 {% endif %} 
@@ -102,7 +87,7 @@
           <select name="cars" id="cars" class="form-select" size="10">
             {% for car in list_of_cars: %} 
               {% if car.sold == 1 %}
-                <option value="{{car.id}}">
+                <option value="{{car.id}}" onclick="load_cars(this, {{car.id}})">
                   {{car.year}} {{car.make}} {{car.model}} {{car.trim}}
                 </option>
               {% endif %} 

@@ -15,6 +15,7 @@ class Car:
         self.color = data['color']
         self.vin = data['vin']
         self.description = data['description']
+        self.file_name = data['file_name']
         self.sold = data['sold']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
@@ -23,8 +24,8 @@ class Car:
     @classmethod
     def create_one(cls,data):
         query = """
-            INSERT INTO cars (user_id, year, make, model, trim, color, vin, description)
-            VALUES (%(user_id)s, %(year)s, %(make)s, %(model)s, %(trim)s, %(color)s, %(vin)s, %(description)s);
+            INSERT INTO cars (user_id, year, make, model, trim, color, vin, description, file_name)
+            VALUES (%(user_id)s, %(year)s, %(make)s, %(model)s, %(trim)s, %(color)s, %(vin)s, %(description)s, %(file_name)s);
         """
         return connectToMySQL( DATABASE ).query_db( query, data )
     
@@ -75,7 +76,8 @@ class Car:
                 trim = %(trim)s,
                 color = %(color)s,
                 vin = %(vin)s,
-                description = %(description)s
+                description = %(description)s,
+                file_name = %(file_name)s
             WHERE id = %(id)s;
         """
         return connectToMySQL( DATABASE ).query_db( query, data )
@@ -88,3 +90,11 @@ class Car:
             WHERE id = %(id)s;
         """
         return connectToMySQL( DATABASE ).query_db( query, data )
+
+    @classmethod
+    def api_get_all(cls):
+        query = """
+            SELECT *
+            FROM cars;
+        """
+        return connectToMySQL( DATABASE ).query_db( query )

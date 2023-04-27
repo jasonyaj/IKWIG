@@ -18,22 +18,22 @@ function sold_action() {
 }
 
 function display_selection(value) {
-  const toggleButton = document.querySelector('#selection');
-  const hiddenItems = document.querySelectorAll('.hidden_item');
+  // const toggleButton = document.querySelector('#selection');
+  // const hiddenItems = document.querySelectorAll('.hidden_item');
 
-  let isHidden = true;
+  // let isHidden = true;
 
-  toggleButton.addEventListener('click', () => {
-    hiddenItems.forEach(item => {
-        if (isHidden) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-    console.log(isHidden);
-    isHidden = !isHidden;
-  });
+  // toggleButton.addEventListener('click', () => {
+  //   hiddenItems.forEach(item => {
+  //       if (isHidden) {
+  //           item.style.display = 'block';
+  //       } else {
+  //           item.style.display = 'none';
+  //       }
+  //   });
+  //   console.log(isHidden);
+  //   isHidden = !isHidden;
+  // });
 
 
   //save the Element you want to modify later as a variable
@@ -53,4 +53,43 @@ function display_selection(value) {
   //         <textarea name="" id="" cols="30" rows="10">{{car.description}}</textarea>``
   //     }
   // }
+}
+
+async function load_cars(element, value) {
+  let URL = "http://127.0.0.1:5000/api/cars"
+  let settings = {
+    method : "GET"
+  }
+
+  let response = await fetch(URL, settings);
+  let data = await response.json();
+
+  let card = document.getElementById("carCard");
+  let targetID = value;
+  let currentCar = data.filter(obj => obj.id === targetID);
+  
+  console.log(currentCar);
+  console.log(value);
+
+  if (currentCar.length > 0) {
+    card.innerHTML = `
+    <div class="row">
+    <img
+      src="../static/img/${currentCar[0].file_name}"
+      alt="Photo of the selected car."
+      onError="this.onerror=null;this.src='../static/img/OneHorsepower.jpg';"
+    />
+    </div>
+    <h5>Year: <span class="ms-2">${currentCar[0].year}</span></h5>
+    <h5>Make: <span class="ms-2">${currentCar[0].make}</span></h5>
+    <h5>Model: <span class="ms-2">${currentCar[0].model}</span></h5>
+    <h5>Trim: <span class="ms-2">${currentCar[0].trim}</span></h5>
+    <h5>Color: <span class="ms-2">${currentCar[0].color}</span></h5>
+    <h5>Description:</h5>
+    <textarea class="mb-5" cols="30" rows="10">${currentCar[0].description}</textarea>
+    `
+  } else {
+    card.innerHTML = "<h5>Sorry, that car was not found in our database.</h5>"
+    console.log('Object with targetID not found');
+  }
 }

@@ -1,3 +1,7 @@
 .hidden-item {
     display: none;
 }
+
+textarea {
+    resize: none;
+}
