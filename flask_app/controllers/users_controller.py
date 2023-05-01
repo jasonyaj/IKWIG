@@ -47,16 +47,21 @@ def login():
             return redirect('/my_garage')
 
 # user logged in and displays garage
-@app.route('/my_garage')
+@app.route('/my_garage', methods=['POST', 'GET'])
 def user():
     if "user_id" not in session:
-        return redirect('/')
-    list_of_cars = cars_model.Car.get_all_cars_by_user()
+        return redirect('/smart@$$')
+    data = {
+        'user_id':session['user_id']
+    }
+    list_of_cars = cars_model.Car.get_all_cars_by_user(data)
     return render_template('my_garage.html', list_of_cars = list_of_cars)
 
 # research page for comps
 @app.route('/research')
 def research():
+    if "user_id" not in session:
+        return redirect('/smart@$$')
     return render_template('research.html')
 
 # page to reset session, used for logging out
@@ -64,3 +69,8 @@ def research():
 def logout():
     session.clear()
     return redirect('/')
+
+# reroute for no session logged in
+@app.route('/smart@$$')
+def smart():
+    return render_template('no_session.html')

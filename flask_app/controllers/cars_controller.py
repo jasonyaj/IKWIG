@@ -6,11 +6,12 @@ from flask_app.models.cars_model import Car
 from werkzeug.utils import secure_filename
 from flask_app.models.files_model import FileTest
 
+# image asset folder directory and extension settings(add more as needed)
 UPLOAD_FOLDER = 'flask_app\\static\\img'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = { 'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif' }
 
-
+# function to check file extension
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -18,6 +19,8 @@ def allowed_file(filename):
 # add a car form
 @app.route('/garage/add')
 def add_a_car():
+    if "user_id" not in session:
+        return redirect('/smart@$$')
     return render_template('add_car.html')
 
 # page to validate, collect, and transfer NEW car data
@@ -26,7 +29,8 @@ def process_car():
     # check if the post request has a file part
     if 'file' not in request.files:
         flash('No file part')
-        return redirect('/')
+        filename = 'none'
+        
 
     # if file part exists in form, save to variable
     file = request.files['file']
@@ -34,7 +38,7 @@ def process_car():
     # if the user does not select a file, browser submits an empty part without filename
     if file.filename == '':
         flash('No selected file')
-        return redirect('/')
+        filename = 'none'
 
     # if valid file submitted, save into local folder (does *NOT* save in database!)
     if file and allowed_file(file.filename):
@@ -43,23 +47,38 @@ def process_car():
         # saves the image into the static/img folder
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-    new_car = {
-        'user_id' : session['user_id'],
-        'year' : request.form['year'],
-        'make' : request.form['make'],
-        'model' : request.form['model'],
-        'trim' : request.form['trim'],
-        'color' : request.form['color'],
-        'vin' : request.form['vin'],
-        'description' : request.form['description'],
-        'file_name' : filename
-    }
+    if filename == 'none':
+        new_car = {
+            'user_id' : session['user_id'],
+            'year' : request.form['year'],
+            'make' : request.form['make'],
+            'model' : request.form['model'],
+            'trim' : request.form['trim'],
+            'color' : request.form['color'],
+            'vin' : request.form['vin'],
+            'description' : request.form['description'],
+            'file_name' : ''
+        }
+    else:
+        new_car = {
+            'user_id' : session['user_id'],
+            'year' : request.form['year'],
+            'make' : request.form['make'],
+            'model' : request.form['model'],
+            'trim' : request.form['trim'],
+            'color' : request.form['color'],
+            'vin' : request.form['vin'],
+            'description' : request.form['description'],
+            'file_name' : filename
+        }
     car_id = Car.create_one(new_car)
     return redirect('/my_garage')
 
 # edit a single selected car info form
 @app.route('/garage/<int:id>/edit')
 def display_edit_car_form(id):
+    if "user_id" not in session:
+        return redirect('/smart@$$')
     data = {
         'id':id
     }
@@ -72,7 +91,7 @@ def update_car(id):
     # check if the post request has a file part
     if 'file' not in request.files:
         flash('No file part')
-        return redirect('/')
+        filename = 'none'
 
     # if file part exists in form, save to variable
     file = request.files['file']
@@ -80,7 +99,7 @@ def update_car(id):
     # if the user does not select a file, browser submits an empty part without filename
     if file.filename == '':
         flash('No selected file')
-        return redirect('/')
+        filename = 'none'
 
     # if valid file submitted, save into local folder (does *NOT* save in database!)
     if file and allowed_file(file.filename):
@@ -89,17 +108,25 @@ def update_car(id):
         # saves the image into the static/img folder
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     
-    data = {
+    if filename == 'none':
+        data = {
         'id': id,
         **request.form,
-        'file_name' : filename,
         'user_id':session['user_id']
-    }
+        } 
+    else:
+        data = {
+            'id': id,
+            **request.form,
+            'file_name' : filename,
+            'user_id':session['user_id']
+        }
+    
     Car.update_one(data)
     return redirect('/my_garage')
 
 # process the selling of a car
-@app.route('/garage/<int:id>/sold', methods=['POST'])
+@app.route('/garage/<int:id>/sold', methods=['POST', 'GET'])
 def sold_car(id):
     data = {
         'id': id

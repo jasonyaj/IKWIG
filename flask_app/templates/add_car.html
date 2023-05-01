@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -54,15 +54,15 @@
           <div class="row">
             <div class="col-6">
               <div>
-                <label for="year"> Year: </label>
-                <input type="text" name="year" id="year" class="form-control" placeholder="YYYY"/>
+                <label for="year" class="form-label"> Year: </label>
+                <input type="text" name="year" id="year" class="form-control" placeholder="YYYY" required/>
               </div>
               <div>
-                <label for="make"> Make: </label>
-                <input type="text" name="make" id="make" class="form-control" />
+                <label for="make" class="form-label"> Make: </label>
+                <input type="text" name="make" id="make" class="form-control" required/>
               </div>
               <div>
-                <label for="model"> Model: </label>
+                <label for="model" class="form-label" required> Model: </label>
                 <input
                   type="text"
                   name="model"
@@ -71,11 +71,11 @@
                 />
               </div>
               <div>
-                <label for="trim"> Trim: </label>
+                <label for="trim" class="form-label"> Trim: </label>
                 <input type="text" name="trim" id="trim" class="form-control" />
               </div>
               <div>
-                <label for="color"> Color: </label>
+                <label for="color" class="form-label"> Color: </label>
                 <input
                   type="text"
                   name="color"
@@ -84,13 +84,13 @@
                 />
               </div>
               <div>
-                <label for="vin"> Vin: </label>
+                <label for="vin" class="form-label"> Vin: </label>
                 <input type="text" name="vin" id="vin" class="form-control" />
               </div>
             </div>
             <div class="col-6">
               <div class="mb-5">
-                <label for="description"> Description: </label>
+                <label for="description" class="form-label"> Description: </label>
                 <textarea
                   name="description"
                   cols="30"
@@ -101,15 +101,15 @@
               </div>
               
               <!-- Add photo feature -->
-              <p>Add a photo:</p>
               <div class="row">
-                  <input type="file" name="file" />
+                <label for="file" class="form-label">Add a photo:</label>
+                <input type="file" name="file" />
               </div>
             
             </div>
             <div class="row mt-3">
               <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-dark">Add Car</button>
+                <button type="submit" class="btn btn-secondary">Add Car</button>
               </div>
             </div>
           </div>

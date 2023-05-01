@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,7 +33,7 @@
           </div>
           <div class="col-6">
             <form action="/logout">
-              <button class="btn btn-dark">Log Out</button>
+              <button class="btn btn-secondary">Log Out</button>
             </form>
           </div>
         </div>
@@ -66,14 +66,15 @@
             <div class="d-flex flex-row-reverse mt-2">
               <div class="">
                 <form action="" method="POST" id="markSold">
-                  <button class="btn btn-dark" onclick="sold_action()">Mark As Sold</button></form>
+                  <button class="btn btn-secondary" onclick="if(confirm('Should we move this to the sold list?')){sold_action();}">Mark As Sold</button>
+                </form>
               </div>
               <div class="mx-2">
-                  <a class="btn btn-dark" id="updateLink" href="#" onclick="update_href(this)">Update</a>
+                  <a class="btn btn-secondary" id="updateLink" href="#" onclick="update_href(this)">Update</a>
               </div>
             <div class="">
               <form action="/garage/add">
-                <button class="btn btn-dark">Add</button>
+                <button class="btn btn-secondary">Add</button>
               </form>
             </div>
           </div>

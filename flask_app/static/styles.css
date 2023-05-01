@@ -1,7 +1,11 @@
-.hidden-item {
-    display: none;
-}
-
 textarea {
     resize: none;
+}
+
+.background {
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: center center;
+    background-attachment: fixed;
 }

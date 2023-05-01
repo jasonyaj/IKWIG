@@ -7,6 +7,7 @@ class FileTest:
         self.updated_at = data['updated_at']
 
 
+    # adds file name to cars table
     @classmethod
     def save( cls, data ):
         query = """
@@ -15,30 +16,3 @@ class FileTest:
         """
 
         return connectToMySQL( cls.db ).query_db( query, data )
-
-
-    # cuurently this mehtod is not in use
-    @classmethod
-    def get_one_by_id( cls, data ):
-        query = """
-        SELECT * FROM files WHERE id = %(id)s;
-        """
-
-        results = connectToMySQL( cls.db ).query_db( query, data )
-
-        return FileTest(results[0])
-    
-
-    # cuurently this mehtod is not in use
-    @classmethod
-    def get_all( cls ):
-        query = 'SELECT * from files'
-
-        results = connectToMySQL( cls.db ).query_db( query )
-
-        files = []
-
-        for row in results:
-            files.append(cls(row))
-
-        return files

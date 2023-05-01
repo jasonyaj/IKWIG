@@ -21,22 +21,26 @@ class Car:
         self.updated_at = data['updated_at']
         self.user = None
 
+    # adds a single car to the database
     @classmethod
     def create_one(cls,data):
         query = """
             INSERT INTO cars (user_id, year, make, model, trim, color, vin, description, file_name)
             VALUES (%(user_id)s, %(year)s, %(make)s, %(model)s, %(trim)s, %(color)s, %(vin)s, %(description)s, %(file_name)s);
         """
+        print("create_one")
         return connectToMySQL( DATABASE ).query_db( query, data )
     
+    # grabs all cars currently under the logged in user
     @classmethod
-    def get_all_cars_by_user(cls):
+    def get_all_cars_by_user(cls, data):
         query = """
             SELECT *
             FROM cars c JOIN users u
-            On u.id = c.user_id;
+            ON u.id = c.user_id
+            WHERE c.user_id = %(user_id)s;
         """
-        result = connectToMySQL( DATABASE ).query_db( query )
+        result = connectToMySQL( DATABASE ).query_db( query,data )
         list_of_cars = []
 
         for row in result:
@@ -55,6 +59,7 @@ class Car:
             list_of_cars.append(current_car)
         return list_of_cars
 
+    # gets a single car, used for update form
     @classmethod
     def get_one( cls, data ):
         query  = """
@@ -65,6 +70,7 @@ class Car:
         result = connectToMySQL( DATABASE ).query_db( query, data )
         return cls( result[0] )
 
+    # updates a single car in the database
     @classmethod
     def update_one( cls, data ):
         query  = """
@@ -82,6 +88,7 @@ class Car:
         """
         return connectToMySQL( DATABASE ).query_db( query, data )
 
+    # marks sold boolean in the cars table to TRUE by setting to 1
     @classmethod
     def sold_one( cls, data ):
         query  = """
@@ -91,10 +98,12 @@ class Car:
         """
         return connectToMySQL( DATABASE ).query_db( query, data )
 
+    # JSON API
     @classmethod
     def api_get_all(cls):
         query = """
             SELECT *
             FROM cars;
         """
+        print("api_get_all")
         return connectToMySQL( DATABASE ).query_db( query )

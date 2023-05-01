@@ -1,61 +1,35 @@
-// carYear = document.getElementById(year);
-// carYear.addEventListener("click", fun);
-// document.getElementById().selected = true;
+// on load to set first car on the list as default and render card
+window.onload = function() {
+  var selectElement = document.getElementById("cars");
+  selectElement.selectedIndex = 0;
+  get_value(selectElement.value);
+  load_cars(this, Number(selectElement.value));
+  console.log(typeof(selectElement.value));
+};
+
+// global car id of current select
 var currentValue = "";
 
+// on click of selection grabs and sets car id value
 function get_value(value){
   currentValue = value;
 }
 
+// use to insert the car id value to the href of the update page
 function update_href() {
   var updateLink = document.getElementById("updateLink");
   updateLink.href = `/garage/${currentValue}/edit`;
 }
 
+// triggers sold route to update boolean value (1= true/sold, 0=false/not sold)
 function sold_action() {
   var markSold = document.getElementById("markSold");
   markSold.action = `/garage/${currentValue}/sold`;
 }
 
-function display_selection(value) {
-  // const toggleButton = document.querySelector('#selection');
-  // const hiddenItems = document.querySelectorAll('.hidden_item');
-
-  // let isHidden = true;
-
-  // toggleButton.addEventListener('click', () => {
-  //   hiddenItems.forEach(item => {
-  //       if (isHidden) {
-  //           item.style.display = 'block';
-  //       } else {
-  //           item.style.display = 'none';
-  //       }
-  //   });
-  //   console.log(isHidden);
-  //   isHidden = !isHidden;
-  // });
-
-
-  //save the Element you want to modify later as a variable
-  // alert(value);
-  // const carCardData = document.getElementById('#carCard');
-  // //loop through each car in the list
-  // for (const car in listOfCars) {
-  //     //for each car in the list, check if the id of it matches the value passed in
-  //     if (car.id === value) {
-  //         //if it is the correct card, set the carCardData's HTML to the stuff we want to display
-  //         carCardData.innerHTML = <h5>Year: <span class="ms-2">{{car.year}}</span></h5>
-  //         <h5>Make: <span class="ms-2">{{car.make}}</span></h5>
-  //         <h5>Model: <span class="ms-2">{{car.model}}</span></h5>
-  //         <h5>Trim: <span class="ms-2">{{car.trim}}</span></h5>
-  //         <h5>Color: <span class="ms-2">{{car.color}}</span></h5>
-  //         <h5>Description:</h5>
-  //         <textarea name="" id="" cols="30" rows="10">{{car.description}}</textarea>``
-  //     }
-  // }
-}
-
+// API route and method
 async function load_cars(element, value) {
+  // "route"
   let URL = "http://127.0.0.1:5000/api/cars"
   let settings = {
     method : "GET"
@@ -64,12 +38,10 @@ async function load_cars(element, value) {
   let response = await fetch(URL, settings);
   let data = await response.json();
 
+  // "method" to grab a single car data by car id and render card
   let card = document.getElementById("carCard");
   let targetID = value;
   let currentCar = data.filter(obj => obj.id === targetID);
-  
-  console.log(currentCar);
-  console.log(value);
 
   if (currentCar.length > 0) {
     card.innerHTML = `
@@ -89,7 +61,7 @@ async function load_cars(element, value) {
     <textarea class="mb-5" cols="30" rows="10">${currentCar[0].description}</textarea>
     `
   } else {
-    card.innerHTML = "<h5>Sorry, that car was not found in our database.</h5>"
+    card.innerHTML = "<h5>No car selected or found in the database.</h5>"
     console.log('Object with targetID not found');
   }
 }
