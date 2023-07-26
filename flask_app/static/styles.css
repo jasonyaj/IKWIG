@@ -1,11 +1,16 @@
 textarea {
-    resize: none;
+  resize: none;
 }
 
 .background {
-    background-size: 100vh;
-    background-repeat: no-repeat;
-    background-color: black;
-    background-position: center center;
-    background-attachment: fixed;
+  background-size: 100vh;
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.noDecoration {
+  text-decoration: none;
+  color: inherit;
 }
