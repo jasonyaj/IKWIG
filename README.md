@@ -15,6 +15,8 @@
 
 Having a big interest in cars I have found that there is no app to keep track of my vehicle collection. There was a need to record previous cars owned as well as current cars in possession. I designed this web app to keep detailed information and be able to display the data to the user.
 
+[Return to Table of Contents](https://github.com/jasonyaj/IKWIG#table-of-contents)
+
 ## Features
 
 - Login/Registration with validations
@@ -36,6 +38,8 @@ Having a big interest in cars I have found that there is no app to keep track of
 - Mark as Sold
 
   <img width="640" alt="mark_as_sold" src="https://github.com/jasonyaj/IKWIG/assets/124213154/c2f79da5-88f0-4e7d-b646-6e98fe61251e">
+
+[Return to Table of Contents](https://github.com/jasonyaj/IKWIG#table-of-contents)
 
 ## Technologies Used
 
