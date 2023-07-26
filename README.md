@@ -6,8 +6,8 @@
 
 ## Table of Contents
 
-- [Features](https://github.com/jasonyaj/IKWIG#features)
 - [Background](https://github.com/jasonyaj/IKWIG#background)
+- [Features](https://github.com/jasonyaj/IKWIG#features)
 - [Technologies Used](https://github.com/jasonyaj/IKWIG#technologies-used)
 - [Functionality](https://github.com/jasonyaj/IKWIG#functionality)
 
@@ -50,6 +50,8 @@ Having a big interest in cars I have found that there is no app to keep track of
 - MySQL Workbench
 - HTML validations as well as server-side validations and Bcrypt for secure login
 - Custom API
+
+[Return to Table of Contents](https://github.com/jasonyaj/IKWIG#table-of-contents)
 
 ## Functionality
 
