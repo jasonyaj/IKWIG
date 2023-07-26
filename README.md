@@ -21,8 +21,8 @@
 - Python Flask
 - HTML, CSS, and Bootstrap
 - Jinja2
-- RESTful routing
+- AJAX, jQuery, and RESTful routing
 - MySQL Workbench
-- HTML and Bootstrap validations as well as server-side validations and Bcrypt for secure login
+- HTML validations as well as server-side validations and Bcrypt for secure login
 - Custom API
 ## Functionality
