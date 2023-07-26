@@ -45,9 +45,8 @@ Having a big interest in cars I have found that there is no app to keep track of
 
 - Python Flask
 - HTML, CSS, and Bootstrap
-- Jinja2
-- AJAX, jQuery, and RESTful routing
-- MySQL Workbench
+- Jinja2 and RESTful routing
+- MySQL
 - HTML validations as well as server-side validations and Bcrypt for secure login
 - Custom API
 
@@ -55,7 +54,7 @@ Having a big interest in cars I have found that there is no app to keep track of
 
 ## Functionality
 
-Upon logging in, the user is taken to their personal virtual garage. When a car is created, the car will be selectable on the "Current Collection" list. Selecting a car on the list will display the information as well as photo entered by the user.
+Upon logging in, the user is taken to their personal virtual garage. When a car is added, the car will be selectable on the "Current Collection" list. Selecting a car on the list will display the information as well as photo entered by the user.
 
 On the add a car page, users are able to enter specific information about their car. The fields include year, make, model, trim, color, vin, and a description box for for further details. One photo is allowed to be uploaded with the entry.
 
