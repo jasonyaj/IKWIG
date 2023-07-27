@@ -21,23 +21,23 @@ Having a big interest in cars I have found that there is no app to keep track of
 
 - Login/Registration with validations
 
-  <img width="640" alt="login_register" src="https://github.com/jasonyaj/IKWIG/assets/124213154/309dac8e-106f-43f3-9e4f-d00cc31a58d1">
+  <img width="640" alt="login_register" src="https://github.com/jasonyaj/IKWIG/assets/124213154/10c79a52-df13-4439-8aa9-5c7aa39108cb">
 
 - My Garage
 
-  <img width="640" alt="my_garage" src="https://github.com/jasonyaj/IKWIG/assets/124213154/145bd7f8-0ca2-4293-a470-101dce267412">
+  <img width="640" alt="my_garage" src="https://github.com/jasonyaj/IKWIG/assets/124213154/5fd05ae2-265c-4e27-aeef-3c0cd1004b1c">
 
 - Add
 
-  <img width="640" alt="add" src="https://github.com/jasonyaj/IKWIG/assets/124213154/6c561f5b-884c-4fde-b9cb-483bfca14ac0">
+  <img width="640" alt="add" src="https://github.com/jasonyaj/IKWIG/assets/124213154/435b58a3-9f46-4d5e-a72b-ea3b836f6d46">
 
 - Update
 
-  <img width="640" alt="update" src="https://github.com/jasonyaj/IKWIG/assets/124213154/ed3f1c63-095e-4640-b55f-5a03024fae4b">
+  <img width="640" alt="update" src="https://github.com/jasonyaj/IKWIG/assets/124213154/684ad4bb-530c-47e1-9500-5d1e7708cd9d">
 
 - Mark as Sold
 
-  <img width="640" alt="mark_as_sold" src="https://github.com/jasonyaj/IKWIG/assets/124213154/c2f79da5-88f0-4e7d-b646-6e98fe61251e">
+  <img width="640" alt="mark_as_sold" src="https://github.com/jasonyaj/IKWIG/assets/124213154/c9427714-1502-40d4-8b25-8fa0caf4a4f3">
 
 [Return to Table of Contents](https://github.com/jasonyaj/IKWIG#table-of-contents)
 
