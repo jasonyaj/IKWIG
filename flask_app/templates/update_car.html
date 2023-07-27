@@ -11,7 +11,10 @@
       integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="{{url_for('static', filename='/styles.css')}}" >
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='/styles.css')}}"
+    />
     <title>IGWIG</title>
   </head>
   <body>
@@ -50,16 +53,32 @@
 
       <!-- Form -->
       <div class="row">
-        <form action="/garage/{{current_car.id}}/update" method="POST" enctype="multipart/form-data">
+        <form
+          action="/garage/{{current_car.id}}/update"
+          method="POST"
+          enctype="multipart/form-data"
+        >
           <div class="row">
             <div class="col-6">
               <div>
                 <label for="year" class="form-label"> Year: </label>
-                <input type="text" name="year" id="year" class="form-control" value="{{current_car.year}}"/>
+                <input
+                  type="text"
+                  name="year"
+                  id="year"
+                  class="form-control"
+                  value="{{current_car.year}}"
+                />
               </div>
               <div>
                 <label for="make" class="form-label"> Make: </label>
-                <input type="text" name="make" id="make" class="form-control" value="{{current_car.make}}"/>
+                <input
+                  type="text"
+                  name="make"
+                  id="make"
+                  class="form-control"
+                  value="{{current_car.make}}"
+                />
               </div>
               <div>
                 <label for="model" class="form-label"> Model: </label>
@@ -73,7 +92,13 @@
               </div>
               <div>
                 <label for="trim" class="form-label"> Trim: </label>
-                <input type="text" name="trim" id="trim" class="form-control" value="{{current_car.trim}}"/>
+                <input
+                  type="text"
+                  name="trim"
+                  id="trim"
+                  class="form-control"
+                  value="{{current_car.trim}}"
+                />
               </div>
               <div>
                 <label for="color" class="form-label"> Color: </label>
@@ -87,31 +112,49 @@
               </div>
               <div>
                 <label for="vin" class="form-label"> Vin: </label>
-                <input type="text" name="vin" id="vin" class="form-control" value="{{current_car.vin}}"/>
+                <input
+                  type="text"
+                  name="vin"
+                  id="vin"
+                  class="form-control"
+                  value="{{current_car.vin}}"
+                />
               </div>
             </div>
             <div class="col-6">
               <div class="mb-5">
-                <label for="description" class="form-label"> Description: </label>
+                <label for="description" class="form-label">
+                  Description:
+                </label>
                 <textarea
                   name="description"
                   cols="30"
                   rows="9"
                   id="description"
                   class="form-control"
-                >{{current_car.description}}</textarea>
+                >
+{{current_car.description}}</textarea
+                >
               </div>
-              
+
               <!-- Add photo feature -->
               <div class="row">
                 <label for="file" class="form-label">Add a new photo:</label>
-                <input type="file" name="file"/>
+                <input type="file" name="file" />
               </div>
-              
+
+              <!-- Hidden input field to include the current file path if it exists-->
+              <input
+                type="hidden"
+                name="current_file_path"
+                value="{{ current_car.file_path }}"
+              />
             </div>
             <div class="row mt-3">
               <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-secondary">Update Car</button>
+                <button type="submit" class="btn btn-secondary">
+                  Update Car
+                </button>
               </div>
             </div>
           </div>

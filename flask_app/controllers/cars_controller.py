@@ -101,29 +101,38 @@ def update_car(id):
         flash('No selected file')
         filename = 'none'
 
+    # Get the current file name from the database for the car being updated
+    current_car = Car.get_one(id)
+    current_file_name = current_car.file_name if current_car else ''
+
     # if valid file submitted, save into local folder (does *NOT* save in database!)
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
 
         # saves the image into the static/img folder
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    
-    if filename == 'none':
-        data = {
-        'id': id,
-        **request.form,
-        'user_id':session['user_id']
-        } 
     else:
-        data = {
-            'id': id,
-            **request.form,
-            'file_name' : filename,
-            'user_id':session['user_id']
-        }
-    
+        filename = current_file_name
+
+    # Prepare the data for updating the car
+    data = {
+        'id': id,
+        'year': request.form['year'],
+        'make': request.form['make'],
+        'model': request.form['model'],
+        'trim': request.form['trim'],
+        'color': request.form['color'],
+        'vin': request.form['vin'],
+        'description': request.form['description'],
+        'file_name': filename,
+        'user_id': session['user_id']
+    }
+
+    # Update the car using the prepared data
     Car.update_one(data)
+
     return redirect('/my_garage')
+
 
 # process the selling of a car
 @app.route('/garage/<int:id>/sold', methods=['POST', 'GET'])

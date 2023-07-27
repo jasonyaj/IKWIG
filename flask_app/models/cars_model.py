@@ -61,14 +61,18 @@ class Car:
 
     # gets a single car, used for update form
     @classmethod
-    def get_one( cls, data ):
-        query  = """
+    def get_one(cls, data):
+        query = """
             SELECT *
             FROM cars
             WHERE id = %(id)s;
         """
-        result = connectToMySQL( DATABASE ).query_db( query, data )
-        return cls( result[0] )
+        if isinstance(data, int):  # Check if data is just the id
+            data = {'id': data}
+
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        return cls(result[0]) if result else None  # Return None if no car is found
+
 
     # updates a single car in the database
     @classmethod
